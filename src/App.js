@@ -11,9 +11,7 @@ export default () => (
 
 const style = StyleSheet.create({
   App: {
-    flexGrow: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    flex: 1,
   }
 })
  
