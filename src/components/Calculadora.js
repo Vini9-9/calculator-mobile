@@ -1,9 +1,14 @@
-import React from 'react' 
+import React, { useState } from 'react' 
 import { View, Text, StyleSheet } from 'react-native'  
 
 import Button from './Button'
+import Display from './Display'
 
 export default class Calculadora extends React.Component {  
+
+    state = {
+        displayValue: '0'
+    }
     
     criarBotoes = (arr) => {
         return arr.map((el, idx) => {
@@ -29,12 +34,15 @@ export default class Calculadora extends React.Component {
 
     render () {
         return (
-            <View style={styles.buttons}>
-                <Button label="AC"/>
-                {this.gerarNumerosTeclado()}
-                <Button label="."/>
-                {this.gerarOperadoresTeclado()}
-            </View>
+            <>
+                <Display value={this.state.displayValue}/>
+                <View style={styles.buttons}>
+                    <Button label="AC"/>
+                    {this.gerarNumerosTeclado()}
+                    <Button label="."/>
+                    {this.gerarOperadoresTeclado()}
+                </View>
+            </>
         )
     }
 
