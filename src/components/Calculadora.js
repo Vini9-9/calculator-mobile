@@ -4,14 +4,28 @@ import { View, Text, StyleSheet } from 'react-native'
 import Button from './Button'
 import Display from './Display'
 
+const initialState = {
+    displayValue: '0',
+    clearDisplay: false,
+    operation: null,
+    values: [0, 0],
+    currentIdx: 0
+} 
+
 export default class Calculadora extends React.Component { 
 
-    state = {
-        displayValue: '24'
-    }
+    state = {...initialState}
 
     addDigit = (n) => {
-        this.setState({ displayValue: `${n}` })
+        if(n === '.' && this.state.displayValue.includes('.')){
+            return
+        }
+
+        this.state.displayValue === '0' ? this.state.displayValue = '' : false
+        const currentValue = this.state.displayValue
+        const displayValue = currentValue + n
+
+        this.setState({ displayValue, clearDisplay: false })
     }
 
     clearMemory = () => {
@@ -19,7 +33,8 @@ export default class Calculadora extends React.Component {
     }
 
     setOperation = () => {
-        
+        // mudar o useState para o idx 1
+        // com exceção do igual
     }
     
     criarBotoesNumericos = (arr, ...estilo) => {
