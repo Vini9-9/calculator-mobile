@@ -29,7 +29,7 @@ export default class Calculadora extends React.Component {
     }
 
     clearMemory = () => {
-        this.setState({ displayValue: '0' })
+        this.setState({...initialState})
     }
 
     setOperation = () => {
