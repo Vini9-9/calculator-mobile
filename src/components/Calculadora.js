@@ -10,9 +10,11 @@ export default class Calculadora extends React.Component {
         displayValue: '0'
     }
     
-    criarBotoes = (arr) => {
+    criarBotoes = (arr, ...estilo) => {
+        const estiloValor = estilo
+        
         return arr.map((el, idx) => {
-            return <Button key={`${idx}`} label={el} ></Button>
+            return <Button key={`${idx}`} label={el} estilo={estiloValor}></Button>
         })
     }
     
@@ -29,7 +31,8 @@ export default class Calculadora extends React.Component {
     gerarOperadoresTeclado = () => {
         const opTeclado = ['/','*','-','+','=']
 
-        return this.criarBotoes(opTeclado)
+        return this.criarBotoes(opTeclado, 'operationButton')
+
     }
 
     render () {
